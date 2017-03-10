@@ -843,6 +843,9 @@
                         " nothing to match on empty string
                         return "\<Tab>"
                     else
+                        if substr =~ ",$" && neosnippet#jumpable()
+                            return "\<Left>\<Del>\<Plug>(neosnippet_jump)"
+                        endif
                         " existing text matching
                         if neosnippet#expandable_or_jumpable()
                             return "\<Plug>(neosnippet_expand_or_jump)"
